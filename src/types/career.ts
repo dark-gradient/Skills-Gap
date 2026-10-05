@@ -98,9 +98,7 @@ export type SoftSkillCategory =
   | 'WORKPLACE COMMUNICATION'
   | 'LEADERSHIP'
   | 'PROFESSIONAL CONFIDENCE'
-  | 'LOGICAL COMMUNICATION'
-  | 'JAPANESE JOB HUNTING'
-  | 'JAPANESE BUSINESS COMMUNICATION';
+  | 'LOGICAL COMMUNICATION';
 
 export interface SoftSkillVideo {
   id: string;

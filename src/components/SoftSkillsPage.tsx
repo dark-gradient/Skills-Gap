@@ -8,7 +8,6 @@ import {
   X,
   Sparkles,
   MessageSquare,
-  Globe,
   User,
   Filter,
   AlertCircle,
@@ -25,7 +24,6 @@ export const SoftSkillsPage: React.FC<SoftSkillsPageProps> = ({
   completedSoftSkillIds = [],
   onToggleSoftSkillCompleted,
 }) => {
-  const [languageFilter, setLanguageFilter] = useState<'ALL' | 'en' | 'ja'>('ALL');
   const [categoryFilter, setCategoryFilter] = useState<SoftSkillCategory>('ALL');
   const [creatorFilter, setCreatorFilter] = useState<string>('ALL');
   const [activeVideo, setActiveVideo] = useState<SoftSkillVideo | null>(null);
@@ -38,7 +36,6 @@ export const SoftSkillsPage: React.FC<SoftSkillsPageProps> = ({
 
   // Filter video catalog
   const filteredVideos = VERIFIED_SOFT_SKILL_VIDEOS.filter((v) => {
-    if (languageFilter !== 'ALL' && v.language !== languageFilter) return false;
     if (categoryFilter !== 'ALL' && v.category !== categoryFilter) return false;
     if (creatorFilter !== 'ALL' && v.creator !== creatorFilter) return false;
     return true;
@@ -58,8 +55,6 @@ export const SoftSkillsPage: React.FC<SoftSkillsPageProps> = ({
     'LEADERSHIP',
     'PROFESSIONAL CONFIDENCE',
     'LOGICAL COMMUNICATION',
-    'JAPANESE JOB HUNTING',
-    'JAPANESE BUSINESS COMMUNICATION',
   ];
 
   return (
@@ -76,44 +71,6 @@ export const SoftSkillsPage: React.FC<SoftSkillsPageProps> = ({
           <p className="text-xs sm:text-sm text-[#687A93] mt-0.5 font-medium leading-relaxed">
             "Learn from people who specialize in this." Presentation, public speaking, interview mastery, and executive communication.
           </p>
-        </div>
-
-        {/* Language Filter */}
-        <div className="flex items-center gap-1.5 p-1 bg-white border border-[#DCE8F5] rounded-xl text-xs font-bold shrink-0 shadow-2xs">
-          <Globe className="w-4 h-4 text-[#8B7CFF] ml-1.5" />
-          <button
-            type="button"
-            onClick={() => setLanguageFilter('ALL')}
-            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
-              languageFilter === 'ALL'
-                ? 'bg-[#8B7CFF] text-white shadow-2xs'
-                : 'text-[#687A93] hover:text-[#172B4D]'
-            }`}
-          >
-            ALL
-          </button>
-          <button
-            type="button"
-            onClick={() => setLanguageFilter('en')}
-            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
-              languageFilter === 'en'
-                ? 'bg-[#8B7CFF] text-white shadow-2xs'
-                : 'text-[#687A93] hover:text-[#172B4D]'
-            }`}
-          >
-            ENGLISH
-          </button>
-          <button
-            type="button"
-            onClick={() => setLanguageFilter('ja')}
-            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
-              languageFilter === 'ja'
-                ? 'bg-[#8B7CFF] text-white shadow-2xs'
-                : 'text-[#687A93] hover:text-[#172B4D]'
-            }`}
-          >
-            日本語
-          </button>
         </div>
       </div>
 
